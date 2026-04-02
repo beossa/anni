@@ -302,7 +302,7 @@ body{
 }
 .photo-frame img{
   width:100%;height:100%;object-fit:cover;
-  display:none;
+  display:block;
 }
 .photo-ph{
   position:absolute;inset:0;
@@ -345,6 +345,30 @@ body{
 }
 .tl-content{
   font-size:1.05rem;line-height:1.65;color:var(--ink);
+}
+.tl-img{
+  width:100%;max-width:320px;
+  border-radius:6px;margin-top:10px;
+  border:1px solid rgba(201,169,110,.35);
+  object-fit:cover;aspect-ratio:4/3;
+  display:block;
+}
+.cam-btn{
+  margin-top:12px;
+  background:linear-gradient(135deg,#8b1a3a,#5c0f25);
+  color:#fdf6e3;border:1px solid rgba(201,169,110,.4);
+  border-radius:20px;padding:9px 20px;
+  font-family:'Dancing Script',cursive;font-size:1rem;
+  cursor:pointer;letter-spacing:1px;
+  box-shadow:0 3px 12px rgba(139,26,58,.35);
+  transition:transform .2s,background .2s;
+}
+.cam-btn:hover{transform:scale(1.05);background:rgba(139,26,58,1);}
+.cam-delete{
+  background:none;border:none;color:rgba(139,26,58,.7);
+  font-size:.78rem;cursor:pointer;margin-top:4px;
+  letter-spacing:1px;text-decoration:underline;
+  font-family:'Cormorant Garamond',serif;
 }
 .tl-date{
   font-size:.75rem;letter-spacing:2.5px;
@@ -456,18 +480,28 @@ body{
     <div class="ornament reveal">✦ ✦ ✦</div>
 
     <!-- Lời mở đầu -->
-    <div class="salut reveal">Em yêu của anh,</div>
+    <div class="salut reveal">Bbi chúii iuuu,</div>
 
     <p class="para reveal">
-      Hôm nay là tròn <strong>6 tháng</strong> kể từ ngày anh may mắn được gọi em là người của mình.
-      Anh không biết dùng từ nào khác ngoài chữ <strong>biết ơn</strong> — biết ơn vì em đã xuất hiện
-      và biến những ngày bình thường trở nên đặc biệt theo cách anh chưa từng nghĩ đến.
+      Anh chẳng biết là trùng hợp hay ngẫu nhiên nữa bbi ơi, anh lại đang viết bức thư đầy tình cảm này trong 
+      một tâm trạng cực kỳ buồn. Nhưng mà anh biết đây là những cảm xúc bắt buộc trong tình yêu. Ngày hôm nay
+      có lẽ anh lại làm cho em buồn nhiều lắm. Những lúc như này anh cảm thấy anh phiền vô cùng ý, cứ suốt 
+      ngày lẽo đẽo nhắn tin cho em, để ý em mọi lúc, cảm giác bị làm phiền nhỉ bbi. Nhưng mà anh cũng chẳng thể 
+      giải thích được, tại vì anh yêu em mà...Anh xin lỗi em nhiều lắm. Hy vọng em có thể kiên nhẫn với anh.
     </p>
 
     <p class="para reveal">
-      Có những buổi sáng thức dậy, điều đầu tiên anh nghĩ đến là em.
+      Hôm nay vừa được nửa năm để anh được may mắn gọi em là <strong>bbi thúi</strong> hihi. 
+      Anh thật sự <strong> trân trọng</strong> và <strong> biết ơn</strong> những gì mình đã trải qua cùng Nhau
+      - đặc biệt là biết ơn cơ hội mà em đã dũng cảm trao nó cho anh vào ngày này 6 tháng trước.
+    </p>
+
+    <p class="para reveal">
+      Có những buổi sáng thức dậy, điều đầu tiên anh nghĩ đến là em. Có thể em thấy những lần anh hay nói bbi hong nhắn
+      cho anh, thật ra hong phải anh trách em đâu, chỉ là lúc nào anh cũng nghĩ đến em hết thuii ạ. 
       Có những lúc mệt mỏi, chỉ cần nghe giọng em thôi là mọi thứ nhẹ đi nhiều lắm.
-      Em không biết đâu, nhưng <strong>em là nơi anh muốn trở về</strong> sau mỗi ngày dài.
+      Em không biết đâu, nhưng <strong>em là nơi anh muốn trở về</strong> sau mỗi ngày dài. Muốn cùng trò chuyện,
+      muốn cùng chia sẽ nhưng đúng là hong thể ngày nào cũng êm đềm như thế được bbi nhỉ.Hihi^^
     </p>
 
     <p class="para reveal">
@@ -476,16 +510,18 @@ body{
       là những lần em cười và anh thấy cả thế giới này trở nên nhẹ hơn.
     </p>
 
+    <p class="para reveal">
+      Người ta vẫn nói khi yêu nhiều quá, mình không còn giữ lại gì cho mình, để rồi thiệt thòi nhiều hơn.
+      Sau đó, ai cũng không dám rơi, dám chìm đắm vào tình yêu vì sợ phải "đau".
+      Vậy mà anh với em vẫn cố chấp, vẫn yêu nhau không suy tính thiệt hơn. Nếu phải chọn nhiều lần, 
+      anh vẫn chọn yêu em say đắm vì anh biết em sẽ đáp lại bằng sự chân thành nhất.
+      Tại sao phải sợ "rơi vào yêu", nếu đổi 10 lần đau lấy 1 lần đẹp đẽ như này anh nguyện đổi.
+    </p>
+
     <!-- Ảnh -->
     <div class="photo-wrap reveal">
       <div class="photo-frame">
-        <!-- ===== THÊM ẢNH: bỏ comment bên dưới, thay đường dẫn ảnh, xoá thẻ .photo-ph ===== -->
-        <!-- <img src="anh-cua-chung-minh.jpg" alt="Chúng mình"> -->
-        <div class="photo-ph">
-          <span style="font-size:2rem">📷</span>
-          <span>Ảnh của chúng mình</span>
-          <small style="font-size:.8rem;opacity:.6">(thêm ảnh vào đây)</small>
-        </div>
+        <img src="anh2.jpg" alt="Chúng mình">
         <span class="c1">✦</span><span class="c2">✦</span>
         <span class="c3">✦</span><span class="c4">✦</span>
       </div>
@@ -502,7 +538,8 @@ body{
         <div class="tl-dot"></div>
         <div class="tl-content">
           <span class="tl-date">05 · 10 · 2025</span>
-          Ngày đầu tiên — ngày anh hỏi em và em gật đầu. Anh nhớ hết.
+          Ngày đầu tiên — ngày mà em đã triệu hồi được tất cả sức mạnh của một thằng đàn ông trong anh bbi à.
+          Runggggggggggggg mà lúc đó anh chạm tay xuống đường là có động đất xảy ra luôn ýyyy.
         </div>
       </div>
 
@@ -510,7 +547,7 @@ body{
         <div class="tl-dot"></div>
         <div class="tl-content">
           <span class="tl-date">Kỷ niệm 1 tháng</span>
-          [Bạn thêm khoảnh khắc đặc biệt vào đây — mình đã làm gì, đi đâu...]
+          <img src="anh5.jpg" alt="Kỷ niệm 1 tháng" class="tl-img">
         </div>
       </div>
 
@@ -519,6 +556,7 @@ body{
         <div class="tl-content">
           <span class="tl-date">Kỷ niệm 3 tháng</span>
           [Khoảnh khắc đáng nhớ — bạn điền vào]
+          <img src="anh4.jpg" alt="Kỷ niệm 3 tháng" class="tl-img">
         </div>
       </div>
 
@@ -527,6 +565,9 @@ body{
         <div class="tl-content">
           <span class="tl-date">05 · 04 · 2026</span>
           Tròn 6 tháng — và anh muốn có thêm rất nhiều tháng nữa bên cạnh em.
+          <div id="captured-wrap" style="margin-top:10px;"></div>
+          <input type="file" id="cam-input" accept="image/*" capture="environment" style="display:none">
+          <button class="cam-btn" onclick="document.getElementById('cam-input').click()">📷 Chụp ảnh kỷ niệm</button>
         </div>
       </div>
     </div>
@@ -682,6 +723,42 @@ function triggerReveal(){
     io.observe(el);
   });
 }
+
+/* ── CAMERA CAPTURE ── */
+(function(){
+  const KEY = 'captured_6m';
+  const wrap = document.getElementById('captured-wrap');
+
+  function renderSaved(){
+    const data = localStorage.getItem(KEY);
+    if(!data) return;
+    wrap.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = data;
+    img.className = 'tl-img';
+    img.alt = 'Ảnh kỷ niệm 6 tháng';
+    const del = document.createElement('button');
+    del.className = 'cam-delete';
+    del.textContent = '✕ Xoá ảnh';
+    del.onclick = () => { localStorage.removeItem(KEY); wrap.innerHTML = ''; };
+    wrap.appendChild(img);
+    wrap.appendChild(del);
+  }
+
+  document.getElementById('cam-input').addEventListener('change', function(){
+    const file = this.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      localStorage.setItem(KEY, e.target.result);
+      renderSaved();
+    };
+    reader.readAsDataURL(file);
+    this.value = '';
+  });
+
+  renderSaved();
+})();
 
 /* ── MUSIC ── */
 let playing=false;
