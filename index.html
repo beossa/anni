@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>6 Tháng Bên Nhau ♥</title>
+<title>♥ Lời tỏ tình lần thứ 6 ♥</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
@@ -581,11 +581,11 @@ body{
         Cảm ơn em đã yêu anh theo cái cách rất riêng của em.
       </p>
       <p class="close-para">
-        Happy 6 months, em yêu. ♥
+        Happy 6 months, em yêu. ♥ ♥ ♥ 
       </p>
     </div>
 
-    <div class="signature reveal">Anh của em,</div>
+    <div class="signature reveal">Bbi heo của emm ♥♥♥</div>
     <div class="date-written reveal">05 · 04 · 2026</div>
     <div class="hearts reveal">♥ &nbsp; ♥ &nbsp; ♥</div>
 
@@ -594,8 +594,7 @@ body{
 
 <!-- Music toggle (tuỳ chọn) -->
 <button class="music-btn" id="music-btn" onclick="toggleMusic()" title="Nhạc nền">♪</button>
-<!-- Thêm file nhạc: <audio id="bg-music" loop><source src="nhac.mp3" type="audio/mpeg"></audio> -->
-<audio id="bg-music" loop></audio>
+<audio id="bg-music" loop><source src="linknhac.mp3" type="audio/mpeg" ></audio>
 
 <script>
 /* ── STARFIELD ── */
@@ -669,7 +668,16 @@ function openEnvelope(){
       document.getElementById('env-screen').style.display='none';
       const ls=document.getElementById('letter-screen');
       ls.style.display='block';
-      setTimeout(()=>{ ls.classList.add('show'); startCounter(); triggerReveal(); },60);
+      setTimeout(()=>{
+        ls.classList.add('show');
+        startCounter();
+        triggerReveal();
+        const a=document.getElementById('bg-music');
+        a.volume=0.3;
+        a.play().catch(()=>{});
+        document.getElementById('music-btn').textContent='♫';
+        playing=true;
+      },60);
     },900);
   },1300);
 }
@@ -711,15 +719,48 @@ function animNum(id,target){
   },28);
 }
 
+/* ── TYPEWRITER ── */
+function typewriter(el){
+  const html=el.innerHTML;
+  const parts=[];
+  let i=0;
+  while(i<html.length){
+    if(html[i]==='<'){
+      const end=html.indexOf('>',i);
+      if(end!==-1){parts.push({t:'tag',v:html.slice(i,end+1)});i=end+1;}
+      else{parts.push({t:'char',v:html[i]});i++;}
+    } else {
+      parts.push({t:'char',v:html[i]});i++;
+    }
+  }
+  el.innerHTML='';
+  el.classList.add('visible');
+  let built='',pi=0;
+  function step(){
+    if(pi>=parts.length){el.innerHTML=html;return;}
+    const p=parts[pi++];
+    built+=p.v;
+    el.innerHTML=built+(p.t==='char'?'<span style="border-right:1.5px solid var(--rose)"> </span>':'');
+    setTimeout(step,p.t==='tag'?0:22);
+  }
+  step();
+}
+
 /* ── SCROLL REVEAL ── */
 function triggerReveal(){
-  const els=document.querySelectorAll('.reveal');
-  const io=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
-  },{threshold:.12});
-  els.forEach((el,i)=>{
-    el.style.transitionDelay=i<6 ? i*.08+'s' : '0s';
-    io.observe(el);
+  const els=Array.from(document.querySelectorAll('.reveal'));
+  const TEXT=['letter-title','letter-sub','salut','para','closing','signature','date-written'];
+  let delay=200;
+  els.forEach(el=>{
+    const isText=TEXT.some(c=>el.classList.contains(c));
+    if(isText){
+      const len=el.textContent.trim().length;
+      setTimeout(()=>typewriter(el),delay);
+      delay+=len*22+300;
+    } else {
+      setTimeout(()=>el.classList.add('visible'),delay);
+      delay+=400;
+    }
   });
 }
 
@@ -764,9 +805,8 @@ let playing=false;
 function toggleMusic(){
   const a=document.getElementById('bg-music');
   const btn=document.getElementById('music-btn');
-  if(!a.src||a.src===location.href){btn.textContent='♫';setTimeout(()=>btn.textContent='♪',500);return;}
   if(playing){a.pause();btn.textContent='♪';}
-  else{a.play();btn.textContent='♫';}
+  else{a.play().catch(()=>{});btn.textContent='♫';}
   playing=!playing;
 }
 </script>
